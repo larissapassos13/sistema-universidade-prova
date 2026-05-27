@@ -3,8 +3,8 @@ package com.universidade.sistema_universidade.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
-@Entity // fala pro cod isso aq é uma tabela
-@Table(name = "alunos") // nome da tabela no banco 
+@Entity
+@Table(name = "alunos")
 public class Aluno {
 
     @Id
@@ -12,16 +12,14 @@ public class Aluno {
     private Long id;
 
     private String nome;
-
     private String endereco;
 
-    @Column(unique = true) // n deixa repetir matricula
+    @Column(unique = true)
     private String matricula;
 
     private LocalDate dataIngresso;
 
-    public Aluno() {
-    }
+    public Aluno() {}
 
     public Long getId() {
         return id;

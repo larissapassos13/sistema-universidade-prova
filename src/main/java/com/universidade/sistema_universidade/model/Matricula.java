@@ -10,22 +10,26 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // ALUNO
     @ManyToOne
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
+    // MATÉRIA
     @ManyToOne
     @JoinColumn(name = "materia_id")
     private Materia materia;
 
+    // TURMA (IMPORTANTE PRA SUA PROVA)
+    @ManyToOne
+    @JoinColumn(name = "turma_id")
+    private Turma turma;
+
     private Double nota1;
-
     private Double nota2;
-
     private Double nota3;
 
-    public Matricula() {
-    }
+    public Matricula() {}
 
     public Long getId() {
         return id;
@@ -45,6 +49,14 @@ public class Matricula {
 
     public void setMateria(Materia materia) {
         this.materia = materia;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
     }
 
     public Double getNota1() {
@@ -71,8 +83,21 @@ public class Matricula {
         this.nota3 = nota3;
     }
 
+    // =========================
+    // MÉDIA
+    // =========================
     public Double getMedia() {
+        double n1 = nota1 != null ? nota1 : 0;
+        double n2 = nota2 != null ? nota2 : 0;
+        double n3 = nota3 != null ? nota3 : 0;
 
-        return (nota1 + nota2 + nota3) / 3;
+        return (n1 + n2 + n3) / 3;
+    }
+
+    // =========================
+    // APROVAÇÃO (IMPORTANTE PRO TURMA CONTROLLER)
+    // =========================
+    public boolean isAprovado() {
+        return getMedia() >= 6.0;
     }
 }
