@@ -1,5 +1,6 @@
 package com.universidade.sistema_universidade.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Turma {
     private String codigo;
 
     // RELACIONAMENTO CORRETO COM MATRÍCULA
+    @JsonIgnore
     @OneToMany(mappedBy = "turma", fetch = FetchType.EAGER)
     private List<Matricula> matriculas;
 

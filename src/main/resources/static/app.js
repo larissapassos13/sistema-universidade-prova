@@ -132,19 +132,44 @@ async function cadastrarMateria() {
   }
 
   try {
-    await req('POST', '/materias', {
+    const data = await req('POST', '/materias', {
       codigo,
       nome,
       ementa
     });
 
-    toast('Matéria criada!');
+    toast(`Matéria cadastrada! ID: ${data.id}`);
 
     ['materia-codigo','materia-nome','materia-ementa']
       .forEach(id => document.getElementById(id).value = '');
 
   } catch (e) {
     toast(e.message, 'error');
+  }
+}
+
+// ── BUSCAR MATÉRIA ─────────────────────────────
+async function buscarMateria() {
+  const codigo = document.getElementById('busca-materia').value.trim();
+  const el = document.getElementById('resultado-materia');
+
+  if (!codigo) return toast('Digite o código da matéria', 'error');
+
+  el.innerHTML = 'Buscando...';
+
+  try {
+    const d = await req('GET', `/materias/codigo/${codigo}`);
+
+    el.innerHTML = `
+      <div class="result-card">
+        <h3>${d.nome}</h3>
+        <p><strong>Código:</strong> ${d.codigo}</p>
+        <p><strong>Ementa:</strong> ${d.ementa || '—'}</p>
+      </div>
+    `;
+
+  } catch {
+    el.innerHTML = 'Matéria não encontrada';
   }
 }
 
@@ -155,9 +180,9 @@ async function cadastrarTurma() {
   if (!codigo) return toast('Informe código da turma', 'error');
 
   try {
-    await req('POST', '/turmas', { codigo });
+    const data = await req('POST', '/turmas', { codigo });
 
-    toast('Turma criada!');
+    toast(`Turma criada! ID: ${data.id}`);
     document.getElementById('turma-codigo').value = '';
 
   } catch (e) {
@@ -208,18 +233,20 @@ async function buscarTurma() {
 async function matricularAluno() {
   const alunoId = document.getElementById('mat-aluno-id').value;
   const materiaId = document.getElementById('mat-materia-id').value;
+  const turmaId = document.getElementById('mat-turma-id').value;
 
   const nota1 = Number(document.getElementById('mat-nota1').value);
   const nota2 = Number(document.getElementById('mat-nota2').value);
   const nota3 = Number(document.getElementById('mat-nota3').value);
 
-  if (!alunoId || !materiaId || isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+  if (!alunoId || !materiaId || !turmaId || isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
     return toast('Preencha todos os campos corretamente', 'error');
   }
 
   try {
     await req('POST', `/alunos/${alunoId}/matriculas`, {
       materia: { id: Number(materiaId) },
+      turma: { id: Number(turmaId) },
       nota1,
       nota2,
       nota3
