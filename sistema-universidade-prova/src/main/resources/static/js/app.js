@@ -1,7 +1,6 @@
-// ── URL base da API Spring Boot ──────────────────────────────────────────────
+
 const API = 'http://localhost:8080';
 
-// ── NAVEGAÇÃO ─────────────────────────────────────────────────────────────────
 function goTo(pageId, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -9,7 +8,7 @@ function goTo(pageId, btn) {
   btn.classList.add('active');
 }
 
-// ── TOAST (notificação) ───────────────────────────────────────────────────────
+
 function toast(msg, tipo = 'success') {
   const t = document.createElement('div');
   t.className = `toast toast-${tipo}`;
@@ -20,13 +19,12 @@ function toast(msg, tipo = 'success') {
   setTimeout(() => t.remove(), 3500);
 }
 
-// ── UTILITÁRIOS ───────────────────────────────────────────────────────────────
 function initials(nome) {
   const parts = (nome || '?').split(' ');
   return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
 }
 
-// ── FUNÇÃO GENÉRICA DE REQUISIÇÃO HTTP ───────────────────────────────────────
+
 async function req(method, path, body) {
   const opts = {
     method,
@@ -41,7 +39,6 @@ async function req(method, path, body) {
   return res.json();
 }
 
-// ── ALUNOS ────────────────────────────────────────────────────────────────────
 async function cadastrarAluno() {
   const nome        = document.getElementById('aluno-nome').value.trim();
   const endereco    = document.getElementById('aluno-endereco').value.trim();
@@ -123,7 +120,6 @@ async function buscarAluno() {
   }
 }
 
-// ── MATÉRIAS ──────────────────────────────────────────────────────────────────
 async function cadastrarMateria() {
   const codigo = document.getElementById('materia-codigo').value.trim();
   const nome   = document.getElementById('materia-nome').value.trim();
@@ -173,7 +169,6 @@ async function buscarMateria() {
   }
 }
 
-// ── TURMAS ────────────────────────────────────────────────────────────────────
 async function cadastrarTurma() {
   const codigo = document.getElementById('turma-codigo').value.trim();
   if (!codigo) { toast('Informe o código da turma.', 'error'); return; }
@@ -238,7 +233,6 @@ async function buscarTurma() {
   }
 }
 
-// ── MATRÍCULAS ────────────────────────────────────────────────────────────────
 async function matricularAluno() {
   const alunoId   = document.getElementById('mat-aluno-id').value;
   const materiaId = document.getElementById('mat-materia-id').value;
@@ -265,7 +259,6 @@ async function matricularAluno() {
   }
 }
 
-// ── PREVIEW DE MÉDIA (cálculo em tempo real) ──────────────────────────────────
 ['mat-nota1', 'mat-nota2', 'mat-nota3'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => {
     const n1   = parseFloat(document.getElementById('mat-nota1').value);

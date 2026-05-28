@@ -112,6 +112,14 @@ nav button svg { width: 16px; height: 16px; flex-shrink: 0; }
 main {
   padding: 2rem;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .page {
+  width: 100%;
+  max-width: 720px;
 }
 
 .page { display: none; }
