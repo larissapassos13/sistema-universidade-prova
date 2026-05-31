@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema Universitário</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- CSS externo -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>🎓 Sistema Universitário</h1>
-  <span>Spring Boot REST API</span>
+  <div class="header-brand">
+    <div class="header-icon">🎓</div>
+    <h1>Sistema Universitário</h1>
+  </div>
+  <span class="header-badge">Spring Boot REST API</span>
 </header>
 
 <div class="layout">
@@ -25,13 +24,16 @@
     <div class="nav-section">
       <div class="nav-label">Alunos</div>
       <button class="active" onclick="goTo('alunos-cadastro', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
         Cadastrar aluno
       </button>
       <button onclick="goTo('alunos-consulta', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
         Consultar aluno
@@ -41,14 +43,15 @@
     <div class="nav-section">
       <div class="nav-label">Matérias</div>
       <button onclick="goTo('materias-cadastro', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          <path d="M12 8v8M8 12h8"/>
         </svg>
         Cadastrar matéria
       </button>
       <button onclick="goTo('materias-consulta', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
         Consultar matéria
@@ -58,14 +61,15 @@
     <div class="nav-section">
       <div class="nav-label">Turmas</div>
       <button onclick="goTo('turmas-cadastro', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <rect x="3" y="4" width="18" height="18" rx="2"/>
           <path d="M16 2v4M8 2v4M3 10h18"/>
+          <path d="M12 14v4M10 16h4"/>
         </svg>
         Cadastrar turma
       </button>
       <button onclick="goTo('turmas-consulta', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
         Consultar turma
@@ -75,12 +79,11 @@
     <div class="nav-section">
       <div class="nav-label">Matrículas</div>
       <button onclick="goTo('matriculas', this)">
-        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
           <polyline points="14,2 14,8 20,8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10,9 9,9 8,9"/>
+          <line x1="12" y1="11" x2="12" y2="17"/>
+          <line x1="9" y1="14" x2="15" y2="14"/>
         </svg>
         Matricular aluno
       </button>
@@ -90,20 +93,20 @@
   <!-- ── CONTEÚDO PRINCIPAL ── -->
   <main>
 
-    <!-- CADASTRAR ALUNO -->
+    <!-- ════ CADASTRAR ALUNO ════ -->
     <div id="alunos-cadastro" class="page active">
       <div class="page-header">
         <h2>Cadastrar Aluno</h2>
-        <p>Adicione um novo aluno ao sistema</p>
+        <p>Adicione um novo aluno ao sistema universitário</p>
       </div>
-      <div class="card" style="max-width: 540px;">
+      <div class="card" style="max-width:560px;">
         <div class="form-group">
           <label>Nome completo</label>
           <input type="text" id="aluno-nome" placeholder="Ex: João Silva">
         </div>
         <div class="form-group">
           <label>Endereço</label>
-          <input type="text" id="aluno-endereco" placeholder="Ex: Rua das Flores, 123 - Aracaju/SE">
+          <input type="text" id="aluno-endereco" placeholder="Ex: Rua das Flores, 123 — Aracaju/SE">
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -116,7 +119,7 @@
           </div>
         </div>
         <button class="btn btn-primary" onclick="cadastrarAluno()">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path d="M12 5v14M5 12h14"/>
           </svg>
           Cadastrar aluno
@@ -124,43 +127,43 @@
       </div>
     </div>
 
-    <!-- CONSULTAR ALUNO -->
+    <!-- ════ CONSULTAR ALUNO ════ -->
     <div id="alunos-consulta" class="page">
       <div class="page-header">
         <h2>Consultar Aluno</h2>
-        <p>Busque um aluno pela matrícula</p>
+        <p>Busque pelo número de matrícula para ver dados e desempenho</p>
       </div>
       <div class="search-bar">
         <input type="text" id="busca-matricula" placeholder="Digite a matrícula..." class="mono"
                onkeydown="if(event.key==='Enter') buscarAluno()">
         <button class="btn btn-primary" onclick="buscarAluno()">Buscar</button>
       </div>
-      <div id="resultado-aluno"></div>
+      <div id="resultado-aluno" class="result-wrap"></div>
     </div>
 
-    <!-- CADASTRAR MATÉRIA -->
+    <!-- ════ CADASTRAR MATÉRIA ════ -->
     <div id="materias-cadastro" class="page">
       <div class="page-header">
         <h2>Cadastrar Matéria</h2>
-        <p>Adicione uma nova matéria ao sistema</p>
+        <p>Registre uma nova matéria com ementa e código</p>
       </div>
-      <div class="card" style="max-width: 540px;">
+      <div class="card" style="max-width:560px;">
         <div class="form-row">
           <div class="form-group">
             <label>Código</label>
             <input type="text" id="materia-codigo" placeholder="Ex: MAT001" class="mono">
           </div>
           <div class="form-group">
-            <label>Nome</label>
+            <label>Nome da matéria</label>
             <input type="text" id="materia-nome" placeholder="Ex: Cálculo I">
           </div>
         </div>
         <div class="form-group">
           <label>Ementa</label>
-          <textarea id="materia-ementa" placeholder="Descreva o conteúdo da matéria..."></textarea>
+          <textarea id="materia-ementa" placeholder="Descreva o conteúdo programático da matéria..."></textarea>
         </div>
         <button class="btn btn-primary" onclick="cadastrarMateria()">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path d="M12 5v14M5 12h14"/>
           </svg>
           Cadastrar matéria
@@ -168,33 +171,33 @@
       </div>
     </div>
 
-    <!-- CONSULTAR MATÉRIA -->
+    <!-- ════ CONSULTAR MATÉRIA ════ -->
     <div id="materias-consulta" class="page">
       <div class="page-header">
         <h2>Consultar Matéria</h2>
-        <p>Busque uma matéria pelo código</p>
+        <p>Busque pelo código para ver a ementa e detalhes</p>
       </div>
       <div class="search-bar">
         <input type="text" id="busca-materia" placeholder="Digite o código da matéria..." class="mono"
                onkeydown="if(event.key==='Enter') buscarMateria()">
         <button class="btn btn-primary" onclick="buscarMateria()">Buscar</button>
       </div>
-      <div id="resultado-materia"></div>
+      <div id="resultado-materia" class="result-wrap"></div>
     </div>
 
-    <!-- CADASTRAR TURMA -->
+    <!-- ════ CADASTRAR TURMA ════ -->
     <div id="turmas-cadastro" class="page">
       <div class="page-header">
         <h2>Cadastrar Turma</h2>
-        <p>Adicione uma nova turma ao sistema</p>
+        <p>Crie uma nova turma com código único</p>
       </div>
-      <div class="card" style="max-width: 540px;">
+      <div class="card" style="max-width:560px;">
         <div class="form-group">
           <label>Código da turma</label>
           <input type="text" id="turma-codigo" placeholder="Ex: TUR2024A" class="mono">
         </div>
         <button class="btn btn-primary" onclick="cadastrarTurma()">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path d="M12 5v14M5 12h14"/>
           </svg>
           Cadastrar turma
@@ -202,68 +205,71 @@
       </div>
     </div>
 
-    <!-- CONSULTAR TURMA -->
+    <!-- ════ CONSULTAR TURMA ════ -->
     <div id="turmas-consulta" class="page">
       <div class="page-header">
         <h2>Consultar Turma</h2>
-        <p>Busque uma turma pelo código</p>
+        <p>Veja alunos matriculados, notas e situação de aprovação</p>
       </div>
       <div class="search-bar">
         <input type="text" id="busca-turma" placeholder="Digite o código da turma..." class="mono"
                onkeydown="if(event.key==='Enter') buscarTurma()">
         <button class="btn btn-primary" onclick="buscarTurma()">Buscar</button>
       </div>
-      <div id="resultado-turma"></div>
+      <div id="resultado-turma" class="result-wrap"></div>
     </div>
 
-    <!-- MATRICULAR ALUNO -->
+    <!-- ════ MATRICULAR ALUNO ════ -->
     <div id="matriculas" class="page">
       <div class="page-header">
         <h2>Matricular Aluno</h2>
-        <p>Vincule um aluno a uma matéria e turma com suas notas</p>
+        <p>Vincule um aluno a uma matéria e turma, lançando suas notas</p>
       </div>
-      <div class="card" style="max-width: 540px;">
+      <div class="card" style="max-width:560px;">
         <div class="note">
-          ⚠️ Use os IDs internos do aluno, matéria e turma. Os IDs aparecem no toast ao cadastrar cada um.
+          ⚠️ Use os IDs internos — eles aparecem no toast ao cadastrar cada item.
         </div>
-        <div class="form-row">
+        <div class="form-row-3">
           <div class="form-group">
             <label>ID do Aluno</label>
-            <input type="number" id="mat-aluno-id" placeholder="Ex: 1" class="mono">
+            <input type="number" id="mat-aluno-id" placeholder="Ex: 1" class="mono" min="1">
           </div>
           <div class="form-group">
             <label>ID da Matéria</label>
-            <input type="number" id="mat-materia-id" placeholder="Ex: 1" class="mono">
+            <input type="number" id="mat-materia-id" placeholder="Ex: 1" class="mono" min="1">
           </div>
           <div class="form-group">
             <label>ID da Turma</label>
-            <input type="number" id="mat-turma-id" placeholder="Ex: 1" class="mono">
+            <input type="number" id="mat-turma-id" placeholder="Ex: 1" class="mono" min="1">
           </div>
         </div>
-        <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr;">
+
+        <hr class="divider">
+
+        <div class="form-row-3">
           <div class="form-group">
             <label>Nota 1</label>
-            <input type="number" id="mat-nota1" min="0" max="10" step="0.1" placeholder="0–10">
+            <input type="number" id="mat-nota1" min="0" max="10" step="0.1" placeholder="0 – 10">
           </div>
           <div class="form-group">
             <label>Nota 2</label>
-            <input type="number" id="mat-nota2" min="0" max="10" step="0.1" placeholder="0–10">
+            <input type="number" id="mat-nota2" min="0" max="10" step="0.1" placeholder="0 – 10">
           </div>
           <div class="form-group">
             <label>Nota 3</label>
-            <input type="number" id="mat-nota3" min="0" max="10" step="0.1" placeholder="0–10">
+            <input type="number" id="mat-nota3" min="0" max="10" step="0.1" placeholder="0 – 10">
           </div>
         </div>
 
         <!-- Preview da média calculada em tempo real -->
-        <div id="media-preview" style="display:none; margin-bottom:1rem; padding:10px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:7px;">
-          <span style="font-size:13px; color:var(--muted);">Média calculada: </span>
-          <strong id="media-valor" style="font-family:'DM Mono',monospace; font-size:15px;"></strong>
-          <span id="media-status" class="badge" style="margin-left:8px;"></span>
+        <div id="media-preview" class="media-preview">
+          <span style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;">Média</span>
+          <span class="media-num" id="media-valor">—</span>
+          <span id="media-status"></span>
         </div>
 
         <button class="btn btn-primary" onclick="matricularAluno()">
-          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path d="M12 5v14M5 12h14"/>
           </svg>
           Realizar matrícula
@@ -274,8 +280,6 @@
   </main>
 </div>
 
-<!-- JavaScript externo — SEMPRE no final do body -->
 <script src="app.js"></script>
-
 </body>
 </html>
